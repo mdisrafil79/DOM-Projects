@@ -7,10 +7,17 @@
 
     <style>
         .box{
-            height: 500px;
-            width: 700px;
+            height: 400px;
+            width: 400px;
             border-radius: 20px;
             border: 2px solid red;
+        }
+        .click-btn{
+            background-color: red;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            padding: 5px, 10px;
         }
     </style>
 </head>
@@ -20,11 +27,16 @@
     <h2 class="ph">Hello! Programming Hero</h2>
     <h2 class="ph">Hello! Programming Hero 2</h2>
 
-    <img style="height: 500px;" id="img" src="" alt="image">
+    <button class="click-btn" id="click-btn">Click Me</button>
+    <img style="height: 300px;" id="img" src="" alt="image">
 
     <button>Login</button>
-    <input type="text">
+    <input type="text" id="my-inp">
     <input type="file">
+
+    <button class="click-btn" id="reload">Reload Page</button>
+
+    <!-- External js -->
     <script src="script.js"></script>
 </body>
 </html>
