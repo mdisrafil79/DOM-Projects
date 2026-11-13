@@ -61,13 +61,18 @@ myInp.addEventListener("keypress" , (e)=>{
   console.log(e.target);
   e.target.style.color = "red"
   // console.log(e.type);
+
+  //local storage save
+  const inputValue = e.target.value 
+  localStorage.setItem("inputValue" , inputValue)
+  document.getElementById("massage").innerText = `Input Value : ${inputValue}`
 })
 
-console.log('Hello');
+// console.log('Hello');
 
-console.log(location);
-console.log(history);
-console.log(innerWidth)
+// console.log(location);
+// console.log(history);
+// console.log(innerWidth)
 
 const reload = document.querySelector("#reload")
 
@@ -75,3 +80,58 @@ reload.addEventListener("click", ()=> {
   console.log("reload");
   location.reload()
 })
+
+//Browser stor
+// localStorage.setItem("location" , "Noakhali")
+// localStorage.setItem("age" , "25")
+// sessionStorage.setItem("street" , "870")
+
+
+const getLocationData = localStorage.getItem("location")
+const getAgeDats = localStorage.getItem("age")
+const getStreetDhaka = sessionStorage.getItem("street")
+
+// console.log(getLocationData);
+// console.log(getAgeDats);
+// console.log(getStreetDhaka);
+
+const myLocation = document.getElementById("location")
+const age = document.getElementById("age")
+const street = document.getElementById("street")
+
+myLocation.innerText = `Location : ${getLocationData}`
+age.innerText = `age : ${getAgeDats}`
+street.innerText = `Street : ${getStreetDhaka}`
+
+localStorage.removeItem("age")
+
+const inputValue = localStorage.getItem("inputValue")
+document.getElementById("massage").innerText = `Input Value : ${inputValue}`
+
+//promise and fetch API
+const promise = new Promise((resolve, reject) => {
+  let success = false
+  if(success){
+    resolve("promise resolve successfully")
+  } else{
+    reject("promise rejected")
+  }
+})
+
+// promise.then(result => {
+//   console.log(result);
+// }).catch(err=> {
+//   console.log(err)
+// })
+
+const fetchUser = ()=>{
+  fetch("https://jsonplaceholder.typicode.com/users")
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+  }).catch((err) => {
+    console.log(err)
+  });
+};
+
+fetchUser();
