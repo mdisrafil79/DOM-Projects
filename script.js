@@ -129,8 +129,19 @@ const fetchUser = ()=>{
   .then((res) => res.json())
   .then((data) => {
     console.log(data);
+    const usersContainer = document.getElementById("users");
+    usersContainer.innerHTML = data.map((user) => `
+      <article class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+        <h2 class="mb-3 text-xl font-bold text-slate-900">${user.name}</h2>
+        <p class="mb-2 text-sm text-slate-600"><strong class="text-slate-800">Username:</strong> ${user.username}</p>
+        <p class="mb-2 text-sm text-slate-600"><strong class="text-slate-800">Email:</strong> <a class="text-blue-600 hover:underline" href="mailto:${user.email}">${user.email}</a></p>
+        <p class="mb-2 text-sm text-slate-600"><strong class="text-slate-800">Address:</strong> ${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}</p>
+        <p class="text-sm text-slate-600"><strong class="text-slate-800">Coordinates:</strong> ${user.address.geo.lat}, ${user.address.geo.lng}</p>
+      </article>
+    `).join("");
   }).catch((err) => {
     console.log(err)
+    document.getElementById("users").textContent = "Unable to load users. Please try again.";
   });
 };
 
